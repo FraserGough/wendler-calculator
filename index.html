@@ -1,3 +1,118 @@
 <html>
-<p>Hello world</p>
+<head>
+<style type="text/css">
+#wrapper {
+  max-width:300px;
+  max-height:100px;
+  margin-left:20px;
+  margin-top:20px;
+  font-family:Helvetica, sans-serif;
+}
+</style>
+<script type="text/javascript">
+  function calculate() {
+    var week = parseInt(document.getElementById("week").value)
+    var baseWeight = parseInt(document.getElementById("baseWeight").value)
+    var liftType = document.getElementById("principalOrAccessory").value
+    var set = 1
+    var strOutput = ""
+    while (set < 4) {
+      strOutput += "<p>"
+        if (week == 1) {
+          if (set == 1) {
+             if (liftType == "Principal") {
+                strOutput += "5 x " + (baseWeight * 0.65).toFixed(2) 
+             } else {
+                strOutput += "10 x " + (baseWeight * 0.5).toFixed(2)
+             }
+          } else  if (set == 2) {
+	      if (liftType == "Principal") {
+	        strOutput += "5 x " + (baseWeight * 0.75).toFixed(2) 
+	       } else {
+	         strOutput += "10 x " + (baseWeight * 0.6).toFixed(2)
+	       }
+          } else if (set == 3) {
+              if (liftType == "Principal") {
+	        strOutput += "5 x " + (baseWeight * 0.85).toFixed(2) 
+              } else {
+	       strOutput += "10 x " + (baseWeight * 0.7).toFixed(2) 
+              }
+          }
+        } else if (week == 2) {
+            if (set == 1) {
+              if (liftType == "Principal") {
+        	strOutput += "3 x " + (baseWeight * 0.7).toFixed(2)
+             } else {
+	        strOutput += "8 x " + (baseWeight * 0.6).toFixed(2)
+             }
+            } else  if (set == 2) {
+                if (liftType == "Principal") {
+	         strOutput += "3 x " + (baseWeight * 0.8).toFixed(2)
+	      } else {
+	         strOutput += "8 x " + (baseWeight * 0.7).toFixed(2)
+	      }
+            } else if (set == 3) {
+               if (liftType == "Principal") {
+	        strOutput += "3 x " + (baseWeight * 0.9).toFixed(2)
+               } else { 
+        	strOutput += "6 x " + (baseWeight * 0.8).toFixed(2)
+               }
+            }
+         } else if (week == 3) {
+            if (set == 1) {
+              if (liftType == "Principal") {
+        	strOutput += "5 x " + (baseWeight * 0.75).toFixed(2) 
+             } else {
+	        strOutput += "5 x " + (baseWeight * 0.65).toFixed(2)
+             }
+            } else  if (set == 2) {
+                if (liftType == "Principal") {
+	         strOutput += "3 x " + (baseWeight * 0.85).toFixed(2) 
+	      } else {
+	         strOutput += "5 x " + (baseWeight * 0.75).toFixed(2)
+	      }
+            } else if (set == 3) {
+               if (liftType == "Principal") {
+	        strOutput += "1 x " + (baseWeight * 0.95).toFixed(2) 
+               } else {
+        	strOutput += "5 x " + (baseWeight * 0.85).toFixed(2)
+               }
+            }
+	} else if (week == 4) {
+            if (set == 1) {
+              if (liftType == "Principal") {
+        	strOutput += "5 x " + (baseWeight * 0.4).toFixed(2) 
+             } else {
+	        strOutput += "5 x " + (baseWeight * 0.4).toFixed(2)
+             }
+            } else  if (set == 2) {
+                if (liftType == "Principal") {
+	         strOutput += "5 x " + (baseWeight * 0.5).toFixed(2) 
+	      } else {
+	         strOutput += "5 x " + (baseWeight * 0.5).toFixed(2)
+	      }
+            } else if (set == 3) {
+               if (liftType == "Principal") {
+	        strOutput += "5 x " + (baseWeight * 0.6).toFixed(2) 
+               } else {
+        	strOutput += "5 x " + (baseWeight * 0.6).toFixed(2)
+               }
+            }
+      }
+      strOutput += "</p>"
+      set = set + 1
+    } 
+    document.getElementById("outputArea").innerHTML= strOutput
+}	
+</script>
+</head>
+<body>
+<div id="wrapper">
+  <p>.9RM <input type="text" id="baseWeight" onchange="calculate()" /></p>
+  <p><select id="principalOrAccessory" onchange="calculate()"><option>Principal</option><option>Accessory</option></select>
+      | week: <select id="week" onchange="calculate()"><option>1</option><option>2</option><option>3</option>
+      <option>4</option></select></p>
+  <div id="outputArea"></div>
+</div>
+</body>
 </html>
